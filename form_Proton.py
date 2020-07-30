@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from names import first_names, last_names
+from mail_verification import get_code
 from time import sleep
 from random import randint
 
@@ -27,7 +28,7 @@ driver.get('https://mail.protonmail.com/create/new?language=en')
 
 id_ = get_random(5)
 
-sleep(3)
+sleep(50)
 driver.switch_to.frame(0)
 
 username = get_username(first_names[randint(0, len(first_names) - 1)],
@@ -46,9 +47,14 @@ driver.find_element_by_id('notificationEmail').send_keys('generalmarkin@yahoo.co
 
 driver.find_element_by_name('submitBtn').click()
 
-sleep(2)
+sleep(50)
 
 driver.find_element_by_id('id-signup-radio-email').click()
 
 driver.find_element_by_id('emailVerification').send_keys('coronelmusk@yahoo.com')
 driver.find_element_by_id('emailVerification').send_keys(Keys.RETURN)
+
+sleep(50)
+
+driver.find_element_by_xpath('//*[@id="codeValue"]').send_keys(get_code())
+driver.find_element_by_xpath('//*[@id="verification-panel"]/p[3]/button').click()
