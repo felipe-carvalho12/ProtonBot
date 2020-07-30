@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from names import first_names, last_names, mail_usernames
+from lists import first_names, last_names, mail_usernames
 from mail_verification import get_code
 from time import sleep
 from random import randint
