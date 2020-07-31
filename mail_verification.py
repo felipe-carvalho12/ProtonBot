@@ -21,6 +21,6 @@ def get_code(username):
 
     sleep(3)
 
-    element = driver.find_element_by_xpath('//*[@id="mail-app-component"]/div/div/div[2]/div/div/div[2]/div/div[1]/ul/li[2]/a/div/div[2]/div[1]/div[2]/div')
-    code = re.findall(r'[0-9]+', element.text)[0]
+    code = re.findall(r'is: (.+?)<', driver.page_source)[0]
+
     return code
