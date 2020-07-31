@@ -25,10 +25,3 @@ def get_username(name, surname, id_):
 
 def get_password(id_):
     return 'G3n3r@l' + id_
-
-
-id_ = get_id()
-name = get_name()
-surname = get_surname()
-username = get_username(name, surname, id_)
-password = get_password(id_)
