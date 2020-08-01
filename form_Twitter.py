@@ -1,12 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
+from mail_verification import get_proton_code
+from time import sleep
 
 
-def get_twitter_accounts(username, email):
+def get_twitter_accounts(username, email, password):
     driver = webdriver.Chrome(r'C:\Users\felip\PycharmProjects\python_projects\Twitter Bot\chromedriver.exe')
     driver.get('https://twitter.com/i/flow/signup')
 
-    driver.implicitly_wait(2)
+    sleep(2)
 
     driver.find_element_by_name('name').send_keys(username)
 
@@ -26,6 +28,50 @@ def get_twitter_accounts(username, email):
     select3 = Select(year)
     select3.select_by_visible_text('2001')
 
-    driver.implicitly_wait(3)
+    sleep(2)
 
-    driver.find_element_by_class_name('css-1dbjc4n r-urgr8i r-42olwf r-sdzlij r-1phboty r-rs99b7 r-1w2pmg r-1vsu8ta r-aj3cln r-icoktb r-1ny4l3l r-1fneopy r-o7ynqc r-6416eg r-lrvibr').click()
+    driver.find_element_by_tag_name('span').click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[1].click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[13].click()
+
+    sleep(2)
+
+    driver.find_element_by_name('verfication_code').send_keys(get_proton_code(username, password))
+
+    driver.find_elements_by_tag_name('span')[1].click()
+
+    sleep(2)
+
+    driver.find_element_by_name('password').send_keys(password)
+
+    driver.find_element_by_tag_name('span').click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[2].click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[2].click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[2].click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[2].click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[8].click()
+
+    sleep(2)
+
+    driver.find_elements_by_tag_name('span')[8].click()
